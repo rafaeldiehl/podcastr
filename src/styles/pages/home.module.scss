@@ -26,10 +26,14 @@
       display: flex;
       align-items: center;
 
-      img {
-        width: 6rem;
-        height: 6rem;
-        border-radius: 1rem;
+      .imageHolder {
+        width: 5rem;
+        height: 5rem;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        background-size: cover;
+        background-position-x: -1rem;
       }
 
       .episodeDetails {
@@ -43,6 +47,10 @@
           font-weight: 600;
           text-decoration: none;
           line-height: 1.4rem;
+          width: 15rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
 
           &:hover {
             text-decoration: underline;
@@ -86,7 +94,7 @@
       button {
         position: absolute;
         right: 2rem;
-        bottom: 2rem;
+        bottom: 1.25rem;
 
         width: 2.5rem;
         height: 2.5rem;
