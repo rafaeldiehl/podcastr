@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import Link from "next/link";
 
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
@@ -14,7 +15,6 @@ type Episode = {
   members: string;
   publishedAt: string;
   thumbnail: string;
-  description: string;
   url: string;
   type: string;
   duration: number;
@@ -35,9 +35,16 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
           {latestEpisodes.map((episode) => {
             return (
               <li key={episode.id}>
-                <img src={episode.thumbnail} alt={episode.title} />
+                <div
+                  className={styles.imageHolder}
+                  style={{
+                    backgroundImage: `url(${episode.thumbnail})`,
+                  }}
+                ></div>
                 <div className={styles.episodeDetails}>
-                  <a>{episode.title}</a>
+                  <Link href={`/episodes/${episode.id}`}>
+                    <a title={episode.title}>{episode.title}</a>
+                  </Link>
                   <p>{episode.members}</p>
                   <span>{episode.publishedAt}</span>
                   <span>{episode.durationAsString}</span>
@@ -54,22 +61,26 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
         <h2>Todos episódios</h2>
         <table cellSpacing={0}>
           <thead>
-            <th></th>
-            <th>Podcast</th>
-            <th>Integrantes</th>
-            <th>Data</th>
-            <th>Duração</th>
-            <th></th>
+            <tr>
+              <th></th>
+              <th>Podcast</th>
+              <th>Integrantes</th>
+              <th>Data</th>
+              <th>Duração</th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
             {allEpisodes.map((episode) => {
               return (
                 <tr key={episode.id}>
                   <td>
-                    <img src={episode.thumbnail} alt={episode.title} />
+                    <img src={episode.thumbnail} alt="" />
                   </td>
                   <td title={episode.title}>
-                    <a href="">{episode.title}</a>
+                    <Link href={`/episodes/${episode.id}`}>
+                      <a>{episode.title}</a>
+                    </Link>
                   </td>
                   <td title={episode.members}>{episode.members}</td>
                   <td>{episode.publishedAt}</td>
@@ -94,7 +105,7 @@ export const getStaticProps: GetStaticProps = async () => {
     params: {
       _limit: 12,
       _sort: "published_at",
-      _order: "description",
+      _order: "desc",
     },
   });
 
