@@ -8,7 +8,12 @@ import "rc-slider/assets/index.css";
 import { PlayerContext } from "../../contexts/PlayerContext";
 
 export default function Player() {
-  const { episodeList, currentEpisodeIndex } = useContext(PlayerContext);
+  const {
+    episodeList,
+    currentEpisodeIndex,
+    isPlaying,
+    togglePlay,
+  } = useContext(PlayerContext);
 
   const episode = episodeList[currentEpisodeIndex];
 
@@ -66,8 +71,15 @@ export default function Player() {
             type="button"
             className={styles.playButton}
             disabled={!episode}
+            onClick={() => {
+              return togglePlay();
+            }}
           >
-            <img src="/play.svg" alt="Tocar" />
+            {isPlaying ? (
+              <img src="/pause.svg" alt="Pausar" />
+            ) : (
+              <img src="/play.svg" alt="Tocar" />
+            )}
           </button>
           <button type="button" disabled={!episode}>
             <img src="/play-next.svg" alt="Tocar próxima" />
