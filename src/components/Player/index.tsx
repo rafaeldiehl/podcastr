@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -8,12 +8,26 @@ import "rc-slider/assets/index.css";
 import { PlayerContext } from "../../contexts/PlayerContext";
 
 export default function Player() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+
   const {
     episodeList,
     currentEpisodeIndex,
     isPlaying,
     togglePlay,
   } = useContext(PlayerContext);
+
+  useEffect(() => {
+    if (!audioRef.current) {
+      return;
+    }
+
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
 
   const episode = episodeList[currentEpisodeIndex];
 
@@ -58,7 +72,7 @@ export default function Player() {
           <span>00:00</span>
         </div>
 
-        {episode && <audio src={episode.url} autoPlay></audio>}
+        {episode && <audio src={episode.url} ref={audioRef} autoPlay></audio>}
 
         <div className={styles.buttons}>
           <button type="button" disabled={!episode}>
