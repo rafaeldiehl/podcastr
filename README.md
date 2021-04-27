@@ -1,6 +1,6 @@
 <h1 align="center"><img src="./public/logo.svg" alt="Podcastr" /></h1>
   
-<p align="center">Podcastr é um projeto em Next.js que foi desenvolvido durante a NLW #4 🚀</p>
+<p align="center">Podcastr é um projeto em Next.js que foi desenvolvido durante a NLW #5 🚀</p>
 
 <p align="center">
 
@@ -154,7 +154,7 @@ Além do projeto criado com as aulas, estão/serão implementadas as seguintes f
 
 <h2 align="center">📝 Licença</h2>
 
-Este projeto possui licença MIT. Veja <a href="http://github.com/rafaeldiehl/podcastr/LICENSE.md">LICENSE.md</a> para mais detalhes.
+Este projeto possui licença MIT. Veja <a href="https://github.com/rafaeldiehl/podcastr/blob/main/LICENSE.md">LICENSE.md</a> para mais detalhes.
 
 <hr />
 
