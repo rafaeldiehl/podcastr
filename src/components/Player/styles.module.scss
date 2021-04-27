@@ -127,6 +127,15 @@
       filter: brightness(0.7);
     }
 
+    &.isActive {
+      filter: invert(0.45) sepia(1) saturate(6) hue-rotate(90deg);
+    }
+
+    &.isActive:hover {
+      filter: brightness(0.2) invert(0.45) sepia(1) saturate(6)
+        hue-rotate(90deg);
+    }
+
     &.playButton {
       width: 4rem;
       height: 4rem;
