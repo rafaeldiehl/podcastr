@@ -43,7 +43,12 @@ export default function Episode({ episode }: EpisodeProps) {
               </button>
             </Link>
             <img src={episode.thumbnail} alt={episode.description} />
-            <button type="button">
+            <button
+              type="button"
+              onClick={() => {
+                return play(episode);
+              }}
+            >
               <img src="/play.svg" alt="Tocar episódio" />
             </button>
           </div>
