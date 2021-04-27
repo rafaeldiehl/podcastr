@@ -1,14 +1,16 @@
 import styles from "./styles.module.scss";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
 import { usePlayer } from "../../contexts/PlayerContext";
+import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString";
 
 export default function Player() {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [progress, setProgress] = useState(0);
 
   const {
     episodeList,
@@ -38,6 +40,13 @@ export default function Player() {
     }
   }, [isPlaying]);
 
+  function setupProgressListener() {
+    audioRef.current.currentTime = 0;
+    audioRef.current.addEventListener("timeupdate", (e) => {
+      setProgress(Math.floor(audioRef.current.currentTime));
+    });
+  }
+
   const episode = episodeList[currentEpisodeIndex];
 
   return (
@@ -66,19 +75,21 @@ export default function Player() {
 
       <footer className={!episode ? styles.empty : ""}>
         <div className={styles.progress}>
-          <span>00:00</span>
+          <span>{convertDurationToTimeString(progress)}</span>
           <div className={styles.slider}>
             {episode ? (
               <Slider
                 trackStyle={{ backgroundColor: "#04d361" }}
                 railStyle={{ backgroundColor: "#9f75ff" }}
                 handleStyle={{ borderColor: "#04d361", borderWidth: 4 }}
+                max={episode.duration}
+                value={progress}
               />
             ) : (
               <div className={styles.emptySlider} />
             )}
           </div>
-          <span>00:00</span>
+          <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
         </div>
 
         {episode && (
@@ -93,6 +104,7 @@ export default function Player() {
             onPause={() => {
               setPlayingState(false);
             }}
+            onLoadedMetadata={setupProgressListener}
           ></audio>
         )}
 
