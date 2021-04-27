@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
+import Head from "next/head";
 
 import { api } from "../../services/api";
 
@@ -34,6 +35,10 @@ export default function Episode({ episode }: EpisodeProps) {
 
   return (
     <div className={styles.episodeContainer}>
+      <Head>
+        <title>Podcastr • {episode.title}</title>
+      </Head>
+
       <div className={styles.episode}>
         <div className={styles.flexContainer}>
           <div className={styles.thumbnailContainer}>
