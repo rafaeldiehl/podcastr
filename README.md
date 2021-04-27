@@ -18,7 +18,7 @@
   
 </p>
 
-<h3 align="center"><img src="./.github/demo.gif" /></h3>
+<h3 align="center"><img width="60%" src="./.github/demo.gif" /></h3>
 
 ### Tabela de Contéudos
 
@@ -115,7 +115,7 @@ yarn run server
  <div id="funcionamentor">
   <h3>Funcionamento</h3>
 
-Você pode iniciar um podcastr apertando o botão "Iniciar" com o ícone de seta verde para direita. É possível utilizar funções de controle do podcast na aba do Player, como ir para o próximo podcast, voltar para o anterior, entrar em looping e dispor os podcasts aleatoriamente.
+Você pode iniciar um podcast apertando o botão "Iniciar" com o ícone de seta verde para direita. É possível utilizar funções de controle do podcast na aba do Player, como ir para o próximo podcast, voltar para o anterior, entrar em looping e dispor os podcasts aleatoriamente.
 
  </div>
 
@@ -152,14 +152,9 @@ Além do projeto criado com as aulas, estão/serão implementadas as seguintes f
 
 <div id="license">
 
-<h2 align="center">📌 Features</h2>
+<h2 align="center">📝 Licença</h2>
 
-Além do projeto criado com as aulas, estão/serão implementadas as seguintes features.
-
-- [ ] Responsividade
-- [ ] Modo escuro
-- [ ] Drag-and-drop
-- [ ] PWA
+Este projeto possui licença MIT. Veja <a href="http://github.com/rafaeldiehl/podcastr/LICENSE.md">LICENSE.md</a> para mais detalhes.
 
 <hr />
 
