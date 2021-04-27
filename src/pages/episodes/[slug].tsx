@@ -6,6 +6,8 @@ import { api } from "../../services/api";
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 
+import { usePlayer } from "../../contexts/PlayerContext";
+
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString";
 
 import styles from "../../styles/pages/episode.module.scss";
@@ -28,6 +30,8 @@ type EpisodeProps = {
 };
 
 export default function Episode({ episode }: EpisodeProps) {
+  const { play } = usePlayer();
+
   return (
     <div className={styles.episodeContainer}>
       <div className={styles.episode}>

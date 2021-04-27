@@ -1,4 +1,5 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, useContext, ReactNode } from "react";
+import Player from "../components/Player";
 
 type Episode = {
   title: string;
@@ -90,3 +91,5 @@ export function PlayerContextProvider({
     </PlayerContext.Provider>
   );
 }
+
+export const usePlayer = () => useContext(PlayerContext);
